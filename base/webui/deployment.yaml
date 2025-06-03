@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: webui
-        image: ghcr.io/linuxserver/text-generation-webui:latest
+        image: oobabooga/text-generation-webui:1.8.0
         ports:
         - containerPort: 7860
         env:
