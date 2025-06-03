@@ -15,11 +15,16 @@ spec:
     spec:
       containers:
       - name: webui
-        image: oobabooga/text-generation-webui:1.8.0
+        image: ghcr.io/ollama-webui/ollama-webui:main  # Официальный образ
         ports:
-        - containerPort: 7860
+        - containerPort: 3000  # Стандартный порт Ollama WebUI
         env:
         - name: OLLAMA_API_BASE_URL
-          value: "http://ollama-phi2:11434"
-        - name: OLLAMA_MODEL
-          value: "phi"
+          value: "http://ollama-phi2:11434"  # Подключение к Ollama API
+        resources:
+          requests:
+            cpu: "0.5"
+            memory: "512Mi"
+          limits:
+            cpu: "1"
+            memory: "1Gi"
