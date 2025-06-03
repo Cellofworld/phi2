@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ollama-phi2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ollama-phi2
+  template:
+    metadata:
+      labels:
+        app: ollama-phi2
+    spec:
+      containers:
+      - name: ollama
+        image: ollama/ollama:latest
+        ports:
+        - containerPort: 11434
+        volumeMounts:
+        - name: models
+          mountPath: /root/.ollama
+        env:
+        - name: OLLAMA_NUM_THREADS
+          value: "4"
+      volumes:
+      - name: models
+        persistentVolumeClaim:
+          claimName: ollama-models-pvc

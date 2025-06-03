@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: phi2-webui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: phi2-webui
+  template:
+    metadata:
+      labels:
+        app: phi2-webui
+    spec:
+      containers:
+      - name: webui
+        image: ghcr.io/oobabooga/text-generation-webui:main
+        ports:
+        - containerPort: 7860
+        env:
+        - name: OLLAMA_API_BASE_URL
+          value: "http://ollama-phi2:11434"
+        - name: OLLAMA_MODEL
+          value: "phi"
+        - name: CLI_ARGS
+          value: "--listen --api --model ollama-phi"

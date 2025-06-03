@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ollama-phi2
+spec:
+  template:
+    spec:
+      containers:
+      - name: ollama
+        env:
+        - name: OLLAMA_KEEP_ALIVE
+          value: "30m"
+        - name: OLLAMA_NO_MMAP
+          value: "true"  # Оптимизация для CPU
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: phi2-webui
+spec:
+  template:
+    spec:
+      containers:
+      - name: webui
+        resources:
+          limits:
+            cpu: "2"
+            memory: "2Gi"
+          requests:
+            cpu: "1"
+            memory: "1Gi"
