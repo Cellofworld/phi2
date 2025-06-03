@@ -7,7 +7,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/your-repo/phi2-argocd.git  # Ваш Git-репозиторий
+    repoURL: https://github.com/Cellofworld/phi2.git  # Ваш Git-репозиторий
     path: overlays/production
     targetRevision: HEAD
   destination:
