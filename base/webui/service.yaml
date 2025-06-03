@@ -4,9 +4,11 @@ metadata:
   name: phi2-webui
   namespace: phi2
 spec:
+  type: NodePort
   selector:
     app: phi2-webui
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 3000  # Пробрасываем порт контейнера
+      targetPort: 3000
+      nodePort: 31000  # Свободный порт из диапазона 30000-32767
