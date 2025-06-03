@@ -2,11 +2,12 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: phi2-ingress
+  namespace: phi2
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: phi2.example.com  # Укажите ваш домен
+  - host: phi2.example.com
     http:
       paths:
       - path: /

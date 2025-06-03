@@ -21,9 +21,6 @@ spec:
         volumeMounts:
         - name: models
           mountPath: /root/.ollama
-        env:
-        - name: OLLAMA_NUM_THREADS
-          value: "4"
       volumes:
       - name: models
         persistentVolumeClaim:

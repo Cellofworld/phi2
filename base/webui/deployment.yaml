@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: phi2-webui
+  namespace: phi2
 spec:
   replicas: 1
   selector:
@@ -22,5 +23,3 @@ spec:
           value: "http://ollama-phi2:11434"
         - name: OLLAMA_MODEL
           value: "phi"
-        - name: CLI_ARGS
-          value: "--listen --api --model ollama-phi"

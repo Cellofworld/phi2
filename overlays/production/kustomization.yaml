@@ -1,16 +1,13 @@
-# overlays/production/kustomization.yaml
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - ../../base
-patches:  # Используем новый формат вместо patchesStrategicMerge
-  - path: patch-cpu-optimization.yaml
+patches:
+  - path: patch-ollama.yaml
     target:
       kind: Deployment
       name: ollama-phi2
-      namespace: phi2  # Явно указываем неймспейс
-  - path: patch-cpu-optimization.yaml
+  - path: patch-webui.yaml
     target:
       kind: Deployment
       name: phi2-webui
-      namespace: phi2
